@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
 			user.setEmail(useremail);
 			user.setPassword(userpassword);
 
-			boolean bool = cus.check(user);
+			//boolean bool = cus.check(user);
 
 			if (bool) {
 				HttpSession session = request.getSession();

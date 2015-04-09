@@ -63,11 +63,13 @@ public class UserDaoImpl implements UserDao {
 		String sql = "INSERT INTO user(email,name,password) VALUES (?,?,?)";
 		PreparedStatement ps = null;
 		try {
-			ps = conn.prepareCall(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getName());
 			ps.setString(3, user.getPassword());
-			flag = ps.execute();
+			if (ps.executeUpdate() != 0) {
+				flag = true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			flag = false;
@@ -160,24 +162,47 @@ public class UserDaoImpl implements UserDao {
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
 		return rs;
 
 	}
 
 	@Override
-	public ResultSet regget(Connection conn, User user) throws SQLException {
+	public boolean regget(Connection conn, User user) throws SQLException {
+		boolean flag = false;
 		String sql = "SELECT * FROM user WHERE email = ?";
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, user.getEmail());
-			ps.setString(2, user.getPassword());
 			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				flag = true;
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (ps != null) {
+					ps.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
 		}
-		return rs;
+		return flag;
 	}
 }

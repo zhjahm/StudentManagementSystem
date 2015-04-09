@@ -44,16 +44,13 @@ public class CheckUserService {
 
 	public boolean regcheck(User user) {
 		Connection conn = null;
-
+		boolean flag = false;
 		try {
 			conn = ConnectionFactory.getInstance().makeConnection();
 			conn.setAutoCommit(false);
 
-			ResultSet resultSet = userDao.regget(conn, user);
+			flag = userDao.regget(conn, user);
 
-			while (resultSet.next()) {
-				return true;
-			}
 		} catch (Exception e) {
 			try {
 				conn.rollback();
@@ -69,7 +66,7 @@ public class CheckUserService {
 			}
 		}
 
-		return false;
+		return flag;
 	}
 
 	public boolean reg(User user) {
@@ -77,7 +74,7 @@ public class CheckUserService {
 		boolean flag = false;
 		try {
 			conn = ConnectionFactory.getInstance().makeConnection();
-			conn.setAutoCommit(false);
+			// conn.setAutoCommit(false);
 			flag = userDao.save(conn, user);
 		} catch (Exception e) {
 			try {

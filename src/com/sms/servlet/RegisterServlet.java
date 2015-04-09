@@ -47,11 +47,13 @@ public class RegisterServlet extends HttpServlet {
 			request.setAttribute("msg", "用户名或密码为空!");
 			rd = request.getRequestDispatcher("error.jsp");
 			rd.forward(request, response);
+			return;
 		}
-		if (userpassword != reuserpassword) {
+		if (!userpassword.equals(reuserpassword)) {
 			request.setAttribute("msg", "两次密码不一致!");
 			rd = request.getRequestDispatcher("error.jsp");
 			rd.forward(request, response);
+			return;
 		}
 		User user = new User();
 		user.setEmail(useremail);
@@ -64,15 +66,16 @@ public class RegisterServlet extends HttpServlet {
 			forward = "error.jsp";
 		} else {
 			boolean regbool = cus.reg(user);
-			if(regbool){
+			if (regbool) {
 				request.setAttribute("msg", "注册成功!");
 				forward = "index.jsp";
-			}else{
+			} else {
 				request.setAttribute("msg", "注册失败!");
 				forward = "error.jsp";
 			}
 		}
 		rd = request.getRequestDispatcher(forward);
 		rd.forward(request, response);
+		return;
 	}
 }

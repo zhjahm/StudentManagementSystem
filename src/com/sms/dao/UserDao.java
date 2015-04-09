@@ -19,6 +19,6 @@ public interface UserDao {
 
 	public ResultSet get(Connection conn, User user) throws SQLException;
 	
-	public ResultSet regget(Connection conn, User user) throws SQLException;
+	public boolean regget(Connection conn, User user) throws SQLException;
 
 }

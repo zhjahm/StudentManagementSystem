@@ -67,8 +67,7 @@ public class UserDaoImpl implements UserDao {
 			ps.setString(1, user.getEmail());
 			ps.setString(2, user.getName());
 			ps.setString(3, user.getPassword());
-			ps.execute();
-			flag = true;
+			flag = ps.execute();
 		} catch (Exception e) {
 			e.printStackTrace();
 			flag = false;
@@ -164,5 +163,21 @@ public class UserDaoImpl implements UserDao {
 		}
 		return rs;
 
+	}
+
+	@Override
+	public ResultSet regget(Connection conn, User user) throws SQLException {
+		String sql = "SELECT * FROM user WHERE email = ?";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, user.getEmail());
+			ps.setString(2, user.getPassword());
+			rs = ps.executeQuery();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return rs;
 	}
 }

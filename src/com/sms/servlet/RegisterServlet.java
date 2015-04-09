@@ -7,12 +7,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import com.sms.Entity.User;
+import com.sms.service.CheckUserService;
 
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private CheckUserService cus = new CheckUserService();
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -46,28 +47,32 @@ public class RegisterServlet extends HttpServlet {
 			request.setAttribute("msg", "用户名或密码为空!");
 			rd = request.getRequestDispatcher("error.jsp");
 			rd.forward(request, response);
-		} else {
-			User user = new User();
-			user.setEmail(useremail);
-			user.setPassword(userpassword);
-
-			//boolean bool = cus.check(user);
-
-			if (bool) {
-				HttpSession session = request.getSession();
-				session.setAttribute("useremail", useremail);
-				// Cookie cookie = new Cookie("useremail", useremail);
-				// cookie.setMaxAge(Integer.MAX_VALUE);
-				// response.addCookie(cookie);
-				forward = "board.jsp";
-			} else {
-				request.setAttribute("msg", "用户名或密码错误!");
-				forward = "error.jsp";
-			}
-
-			rd = request.getRequestDispatcher(forward);
+		}
+		if (userpassword != reuserpassword) {
+			request.setAttribute("msg", "两次密码不一致!");
+			rd = request.getRequestDispatcher("error.jsp");
 			rd.forward(request, response);
 		}
-	}
+		User user = new User();
+		user.setEmail(useremail);
+		user.setPassword(userpassword);
+		user.setName(username);
+		boolean bool = cus.regcheck(user);
 
+		if (bool) {
+			request.setAttribute("msg", "用户名已存在!");
+			forward = "error.jsp";
+		} else {
+			boolean regbool = cus.reg(user);
+			if(regbool){
+				request.setAttribute("msg", "注册成功!");
+				forward = "index.jsp";
+			}else{
+				request.setAttribute("msg", "注册失败!");
+				forward = "error.jsp";
+			}
+		}
+		rd = request.getRequestDispatcher(forward);
+		rd.forward(request, response);
+	}
 }

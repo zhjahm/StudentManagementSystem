@@ -81,7 +81,7 @@
 					</div>
 					<button class="btn btn-primary" type="submit" name="submit"
 						onclick="return check(this);">登录</button>
-					<button class="btn btn-success" type="button" name="register" href="register.jsp">注册</button>
+					<button class="btn btn-success" type="button" name="register" onclick="location.href='register.jsp'">注册</button>
 					<button class="btn btn-default" type="reset" name="reset">重置</button>
 
 				</form>

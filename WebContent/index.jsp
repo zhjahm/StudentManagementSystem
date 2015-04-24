@@ -8,14 +8,15 @@
 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 <link href="css/bootstrap-theme.min.css" rel="stylesheet"
 	type="text/css" />
-<link href="css/header.css" rel="stylesheet" type="text/css" />
+<!-- <link href="css/header.css" rel="stylesheet" type="text/css" /> -->
+<link href="css/Index_back.css" rel="stylesheet" type="text/css" />
 <title>班务管理系统</title>
 </head>
 <body>
-	<nav class="navbar navbar-default">
+	<!-- 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
+		Collect the nav links, forms, and other content for toggling
 		<div class="collapse navbar-collapse"
 			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
@@ -58,18 +59,23 @@
 				<li><a href="#">通知</a></li>
 			</ul>
 		</div>
-		<!-- /.navbar-collapse -->
+		/.navbar-collapse
 	</div>
-	<!-- /.container-fluid --> </nav>
+	/.container-fluid </nav> -->
 
-	<div class="jumbotron">
-		<div class="container">
-			<h1>Student Management System!</h1>
-			<p>帮助你管理班级的点点滴滴。V0.0.1</p>
+	<!-- 	<div class="jumbotron"> -->
+	<div class="container">
+		<!-- 			<h1>Student Management System!</h1>
+			<p>帮助你管理班级的点点滴滴。V0.0.1</p> -->
+		<!-- <div style="width: 200px; margin-left: auto; margin-right: auto;"> -->
+		<center>
+		<h1>SMS！<img src="images/2.png" /></h1>
 			<div style="width: 200px; margin-left: auto; margin-right: auto;">
+
 				<form action="<%=request.getContextPath()%>/CheckServlet"
 					method="post" name="LoginForm">
-					<h2 class="form-signin-heading">用户登录</h2>
+					<!-- <h2 class="form-signin-heading">用户登录</h2> -->
+					
 					<input type="email" name="inputuseremail" class="form-control"
 						placeholder="用户名" required autofocus> <input
 						type="password" name="inputuserpassword" class="form-control"
@@ -81,22 +87,24 @@
 					</div>
 					<button class="btn btn-primary" type="submit" name="submit"
 						onclick="return check(this);">登录</button>
-					<button class="btn btn-success" type="button" name="register" onclick="location.href='register.jsp'">注册</button>
+					<button class="btn btn-success" type="button" name="register"
+						onclick="location.href='register.jsp'">注册</button>
 					<button class="btn btn-default" type="reset" name="reset">重置</button>
-
 				</form>
 
 			</div>
-		</div>
+		</center>
 	</div>
 
+	<!-- 	</div> -->
 
 
-	<footer class="footer">
+
+<!-- 	<footer class="footer">
 	<div class="container">
 		<p class="text-muted">Nice to meet you.</p>
 	</div>
-	</footer>
+	</footer> -->
 
 
 

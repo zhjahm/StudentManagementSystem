@@ -1,44 +1,65 @@
 @CHARSET "UTF-8";
 
-.header-logo{bottom:0;display:block;height:30px;left:50%;margin-left:-40px;opacity:.5;position:absolute;top:5px;width:80px;text-align:center;-webkit-transition:opacity ease-in 85ms;transition:opacity ease-in 85ms;z-index:2}
-.header-logo:hover{opacity:.8}
-.navbar-default{background-image:linear-gradient(to bottom,#026aa7 0,#026aa7 100%);}
+.header-logo {
+	bottom: 0;
+	display: block;
+	height: 30px;
+	left: 50%;
+	margin-left: -40px;
+	opacity: .5;
+	position: absolute;
+	top: 5px;
+	width: 80px;
+	text-align: center;
+	-webkit-transition: opacity ease-in 85ms;
+	transition: opacity ease-in 85ms;
+	z-index: 2
+}
+
+.header-logo:hover {
+	opacity: .8
+}
+
+.navbar-default {
+	background-image: linear-gradient(to bottom, #026aa7 0, #026aa7 100%);
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-}
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  background-color: #f5f5f5;
+	position: relative;
+	min-height: 100%;
 }
 
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	background-color: #f5f5f5;
+}
 
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
-
-body > .container {
-  padding: 60px 15px 0;
+body>.container {
+	padding: 60px 15px 0;
 }
+
 .container .text-muted {
-  margin: 20px 0;
+	margin: 20px 0;
 }
 
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
+.footer>.container {
+	padding-right: 15px;
+	padding-left: 15px;
 }
 
 code {
-  font-size: 80%;
+	font-size: 80%;
 }

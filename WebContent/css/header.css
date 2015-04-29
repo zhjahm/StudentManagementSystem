@@ -23,6 +23,10 @@
 .navbar-default {
 	background-image: linear-gradient(to bottom, #026aa7 0, #026aa7 100%);
 }
+
+.navbar-default .navbar-nav>li>a{
+	color:#fff;
+}
 /* Sticky footer styles
 -------------------------------------------------- */
 html {

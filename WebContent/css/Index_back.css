@@ -2,6 +2,8 @@
 body,html
 {
 	background: url(../images/1.png) repeat!important;
+	padding-top: 60px;
+	padding-bottom: 40px;
 }
 
 div.container

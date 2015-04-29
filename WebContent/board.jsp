@@ -8,6 +8,7 @@
 <link href="css/bootstrap-theme.min.css" rel="stylesheet"
 	type="text/css" />
 <link href="css/header.css" rel="stylesheet" type="text/css" />
+<link rel="shortcut icon" href="images/favicon.png" />
 <title>SMS！</title>
 </head>
 <body>
@@ -21,9 +22,9 @@
 						<span class="caret"></span>
 				</a>
 					<ul class="dropdown-menu" role="menu">
-						<li><a href="#">10计算机科学与技术</a></li>
-						<li><a href="#">14计算机系统结构</a></li>
-						<li><a href="#">OPENGL兴趣班</a></li>
+						<li><a href="#">10计算机科学与技术 <span class="badge alert-info">3</span></a></li>
+						<li><a href="#">14计算机系统结构 <span class="badge alert-info">17</span></a></li>
+						<li><a href="#">OPENGL兴趣班 <span class="badge alert-info">1</span></a></li>
 						<li class="divider"></li>
 						<li><a href="#">管理班级</a></li>
 						<li><a href="#">加入班级</a></li>
@@ -35,13 +36,15 @@
 				</div>
 			</form>
 
-			<a class="header-logo" href="/" title="返回主页">123 </a>
+			<a class="header-logo" href="/" title="返回主页"><img alt="logo"
+				src="images/logo100.png"> </a>
 
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">+</a></li>
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-expanded="false"><img
-						alt="s" src="/img"> 沈君政 <span class="caret"></span> </a>
+						alt="user" src="images/user.png" height="20" width="20"> 沈君政
+						<span class="caret"></span> </a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="#">用户管理</a></li>
 						<li><a href="#">系统设置</a></li>
@@ -57,10 +60,10 @@
 		<div class="jumbotron">
 			<h3>管理的班级</h3>
 			<div class="row">
-				<div class="col-sm-6 col-md-4">
+				<div class="col-sm-5 col-md-3">
 					<div class="thumbnail">
 						<div class="caption">
-							<h3>10计算机科学与技术</h3>
+							<h4>10计算机科学与技术 <span class="badge alert-info">3</span></h4>
 							<p>
 								<a href="#" class="btn btn-primary" role="button">进入班级</a> <a
 									href="#" class="btn btn-default" role="button">管理班级</a>
@@ -68,10 +71,10 @@
 						</div>
 					</div>
 				</div>
-								<div class="col-sm-6 col-md-4">
+				<div class="col-sm-5 col-md-3">
 					<div class="thumbnail">
 						<div class="caption">
-							<h3>14计算机系统结构</h3>
+							<h4>14计算机系统结构 <span class="badge alert-info">17</span></h4>
 							<p>
 								<a href="#" class="btn btn-primary" role="button">进入班级</a> <a
 									href="#" class="btn btn-default" role="button">管理班级</a>
@@ -79,24 +82,35 @@
 						</div>
 					</div>
 				</div>
-								<div class="col-sm-6 col-md-4">
+				
+<!-- 				<div class="col-sm-3 col-md-2">
 					<div class="thumbnail">
-						<div class="caption">
-							<h3>OPENGL兴趣班</h3>
+					<div class="caption">
+					<h4>更多班级</h4>
 							<p>
-								<a href="#" class="btn btn-primary" role="button">进入班级</a> <a
-									href="#" class="btn btn-default" role="button">管理班级</a>
-							</p>
-						</div>
+								<a href="#" class="btn btn-primary" role="button">创建班级</a>
+							</p></div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 
 
 		<div class="jumbotron">
 			<h3>加入的班级</h3>
+			<div class="row">
 
+				<div class="col-sm-5 col-md-3">
+					<div class="thumbnail">
+						<div class="caption">
+							<h4>OPENGL兴趣班 <span class="badge alert-info">1</span></h4>
+							<p>
+								<a href="#" class="btn btn-primary" role="button">进入班级</a> 
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 
 	</div>

@@ -1,5 +1,5 @@
 
 <%
-	//if(session.getAttribute("sysuser_id")==null||session.getAttribute("sysuser_id").toString().length()==0)
-		//response.sendRedirect(request.getContextPath()+"/login.jsp");		
+	//if(session.getAttribute("useremail")==null||session.getAttribute("useremail").toString().length()==0)
+		//response.sendRedirect(request.getContextPath()+"/index.jsp");
 %>

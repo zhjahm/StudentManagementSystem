@@ -1,73 +1,165 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<link rel="stylesheet" href="css/core.css">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+管理班级
+            </h4>
+         </div>
+         <div class="modal-body">
+<table class="table table-hover">
+   <caption>管理的班級</caption>
+   <thead>
+      <tr>
+         <th>班級名稱</th>
+         <th>操作</th>
+      </tr>
+   </thead>
+   <tbody>
+      <tr>
+         <td>13计算机</td>
+         <td>
+<a href="#" class="btn btn-primary" role="button">进入班级</a> 
+<a href="#" class="btn btn-danger" role="button">退出班级</a>
+</td>
+      </tr>
+      <tr>
+         <td>Sachin</td>
+         <td>Mumbai</td>
+      </tr>
+      <tr>
+         <td>Uma</td>
+         <td>Pune</td>
+      </tr>
+   </tbody>
+</table>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
 
-<title>Insert title here</title>
-</head>
-<body>
-	<div id="header">
-		<a class="header-logo js-home-via-logo" href="/" title="返回主页"> <span
-			class="header-logo-loading"></span> <span class="header-logo-default"></span>
-		</a>
-		<div class="header-boards-button">
-			<a class="header-btn header-boards js-boards-menu" title="访问班级列表"
-				href="#"> <span class="header-btn-icon icon-lg icon-board light"></span>
-				<span class="header-btn-text">班级列表</span>
-			</a>
-		</div>
-		<div>
-			<a href="/search"
-				class="header-btn open-search-btn js-open-search-page"
-				title="查找班级、事件、用户"> <span
-				class="header-btn-icon icon-lg icon-search light"></span>
-			</a>
-
-			<div class="header-search">
-
-				<input
-					class="header-search-input js-search-input js-disable-on-dialog"
-					type="text" value=""> <span
-					class="header-search-icon icon-lg icon-search light js-search-icon js-search-focus"></span>
-
-				<span
-					class="header-search-icon header-search-icon-close icon-lg icon-close light hide js-close-icon js-search-close"></span>
-
-				<a href="#"
-					class="header-search-icon header-search-icon-open icon-lg     icon-external-link light hide js-open-button js-open-search-page"></a>
-
+<div class="modal fade" id="userset" tabindex="-1" role="dialog" 
+   aria-labelledby="myModalLabel" aria-hidden="true">
+   <div class="modal-dialog">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" 
+               data-dismiss="modal" aria-hidden="true">
+                  &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+用户设置
+            </h4>
+         </div>
+         <div class="modal-body">
+         <h4>信息修改</h4>
+	<div style="width: 200px; margin-left: auto; margin-right: auto;">
+				<c:if test="${msg != null && msgtype == 'error'}">
+					<div class="alert alert-danger" role="alert">
+						<a href="#" class="close" data-dismiss="alert">&times;</a> <span
+							class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<c:out value="${msg}"></c:out>
+					</div>
+				</c:if>
+				<form action="<%=request.getContextPath()%>/RegisterServlet"
+					method="post" name="LoginForm">
+					<input type="email" name="inputuseremail" class="form-control"
+						placeholder="用户邮箱" required autofocus>
+					<div class="line-large"></div>
+					<input type="text" name="inputusername" class="form-control"
+						placeholder="真实姓名" required autofocus>
+					<div class="line-large"></div>
+					<input type="password" name="inputuserpassword"
+						class="form-control" placeholder="密码" required>
+					<div class="line-large"></div>
+					<input type="password" name="inputreuserpassword"
+						class="form-control" placeholder="确认密码" required>
+					<div class="line-large"></div>
+					<button class="btn btn-primary" type="submit" name="submit"
+						onclick="return check(this);">确认提交</button>
+					<button class="btn btn-default" type="reset" name="reset">重置</button>
+				</form>
 			</div>
-		</div>
-		<div>
-			<a class="header-btn header-woof woof-hide" href="#"> <span
-				class="taco-talk-small-icon"></span> <span class="header-btn-text"><span
-					class="left-arrow"></span><span class="js-phrase">New stuff!</span></span>
-			</a>
-		</div>
-		<div class="header-user">
-			<a class="header-btn js-open-add-menu" href="#" title="新建班级或事务">
-				<span class="header-btn-icon icon-lg icon-add light"></span>
-			</a> <a class="header-btn header-member js-open-header-member-menu"
-				href="#" title="Get access to your profile, help, and log out.">
-				<span class="member"> <img class="member-avatar" height="30"
-					width="30"
-					src="https://trello-avatars.s3.amazonaws.com/d356d5d8013c24c1ee515b59082d13f6/30.png"
-					alt="shenjunzheng (shenjunzheng)"
-					title="shenjunzheng (shenjunzheng)"> <span
-					class="member-gold-badge" title="This member has Trello Gold."></span>
-			</span> <span class="header-btn-text js-member-name">shenjunzheng</span>
-			</a> <a
-				class="header-btn header-notifications js-open-header-notifications-menu"
-				href="#" title="0 Notifications. Click to view notifications.">
-				<span class="header-btn-icon icon-lg icon-notification light"></span>
-			</a>
+			         <h4>密码修改</h4>
+			         <div style="width: 200px; margin-left: auto; margin-right: auto;">
+				<c:if test="${msg != null && msgtype == 'error'}">
+					<div class="alert alert-danger" role="alert">
+						<a href="#" class="close" data-dismiss="alert">&times;</a> <span
+							class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+						<c:out value="${msg}"></c:out>
+					</div>
+				</c:if>
+				
+				<form action="<%=request.getContextPath()%>/RegisterServlet"
+					method="post" name="LoginForm">
+				<input type="password" name="inputuserpassword"
+						class="form-control" placeholder="旧密码" required>
+					<div class="line-large"></div>
+					<input type="password" name="inputuserpassword"
+						class="form-control" placeholder="新密码" required>
+					<div class="line-large"></div>
+					<input type="password" name="inputreuserpassword"
+						class="form-control" placeholder="确认新密码" required>
+					<div class="line-large"></div>
+					<button class="btn btn-primary" type="submit" name="submit"
+						onclick="return check(this);">确认提交</button>
+					<button class="btn btn-default" type="reset" name="reset">重置</button>
+				</form>
+			</div>
+         </div>
+      </div><!-- /.modal-content -->
+</div><!-- /.modal -->
+</div>
 
+	<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false">班级列表
+						<span class="caret"></span>
+				</a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#">10计算机科学与技术 <span class="badge alert-info">3</span></a></li>
+						<li><a href="#">14计算机系统结构 <span class="badge alert-info">17</span></a></li>
+						<li><a href="#">OPENGL兴趣班 <span class="badge alert-info">1</span></a></li>
+						<li class="divider"></li>
+						<li><a href="#" data-toggle="modal" 
+   data-target="#myModal">管理班级</a></li>
+						<li><a href="#">加入班级</a></li>
+					</ul></li>
+			</ul>
+			<form class="navbar-form navbar-left" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+			</form>
 
+			<a class="header-logo" href="<%=request.getContextPath()%>/board.jsp" title="返回主页"><img alt="logo"
+				src="images/logo100.png"> </a>
 
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">+</a></li>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-expanded="false"><img
+						alt="user" src="images/user.png" height="20" width="20"> 沈君政
+						<span class="caret"></span> </a>
+					<ul class="dropdown-menu" role="menu">
+						<li><a href="#" data-toggle="modal" 
+   data-target="#userset">用户管理</a></li>
+						<li><a href="#">系统设置</a></li>
+						<li class="divider"></li>
+						<li><a href="<%=request.getContextPath()%>/logout.jsp">退出系统</a></li>
+					</ul></li>
+			</ul>
 		</div>
 	</div>
-</body>
-</html>
+	</nav>

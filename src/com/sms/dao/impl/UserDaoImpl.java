@@ -162,14 +162,6 @@ public class UserDaoImpl implements UserDao {
 			rs = ps.executeQuery();
 		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				if (ps != null) {
-					ps.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
 		}
 		return rs;
 

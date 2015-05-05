@@ -4,6 +4,7 @@ body,html
 	background: url(../images/1.png) repeat!important;
 	padding-top: 60px;
 	padding-bottom: 40px;
+	color:#fff;
 }
 
 div.container
@@ -11,6 +12,10 @@ div.container
 	width:300px;
 }
 
+.line-large
+{
+	padding-top:20px;
+}
 /* button.login
 {
 	width:200px;

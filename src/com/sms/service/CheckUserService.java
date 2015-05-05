@@ -13,35 +13,6 @@ public class CheckUserService {
 
 	private UserDao userDao = new UserDaoImpl();
 
-	public boolean check(User user) {
-		Connection conn = null;
-
-		try {
-			conn = ConnectionFactory.getInstance().makeConnection();
-			conn.setAutoCommit(false);
-
-			ResultSet resultSet = userDao.get(conn, user);
-
-			while (resultSet.next()) {
-				return true;
-			}
-		} catch (Exception e) {
-			try {
-				conn.rollback();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-			e.printStackTrace();
-		} finally {
-			try {
-				conn.close();
-			} catch (Exception e3) {
-				e3.printStackTrace();
-			}
-		}
-		return false;
-	}
-
 	public boolean regcheck(User user) {
 		Connection conn = null;
 		boolean flag = false;

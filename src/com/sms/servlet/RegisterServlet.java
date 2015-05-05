@@ -37,6 +37,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+		
 		String useremail = request.getParameter("inputuseremail");
 		String username = request.getParameter("inputusername");
 		String userpassword = request.getParameter("inputuserpassword");
@@ -44,17 +45,20 @@ public class RegisterServlet extends HttpServlet {
 		RequestDispatcher rd = null;
 		String forward = null;
 		if (useremail == null || userpassword == null) {
+			request.setAttribute("msgtype", "error");
 			request.setAttribute("msg", "用户名或密码为空!");
-			rd = request.getRequestDispatcher("error.jsp");
+			rd = request.getRequestDispatcher("register.jsp");
 			rd.forward(request, response);
 			return;
 		}
 		if (!userpassword.equals(reuserpassword)) {
+			request.setAttribute("msgtype", "error");
 			request.setAttribute("msg", "两次密码不一致!");
-			rd = request.getRequestDispatcher("error.jsp");
+			rd = request.getRequestDispatcher("register.jsp");
 			rd.forward(request, response);
 			return;
 		}
+		
 		User user = new User();
 		user.setEmail(useremail);
 		user.setPassword(userpassword);
@@ -62,16 +66,19 @@ public class RegisterServlet extends HttpServlet {
 		boolean bool = cus.regcheck(user);
 
 		if (bool) {
-			request.setAttribute("msg", "用户名已存在!");
-			forward = "error.jsp";
+			request.setAttribute("msgtype", "error");
+			request.setAttribute("msg", "用户邮箱已存在!");
+			forward = "register.jsp";
 		} else {
 			boolean regbool = cus.reg(user);
 			if (regbool) {
+				request.setAttribute("msgtype", "success");
 				request.setAttribute("msg", "注册成功!");
 				forward = "index.jsp";
 			} else {
+				request.setAttribute("msgtype", "error");
 				request.setAttribute("msg", "注册失败!");
-				forward = "error.jsp";
+				forward = "register.jsp";
 			}
 		}
 		rd = request.getRequestDispatcher(forward);
